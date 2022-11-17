@@ -22,7 +22,7 @@ class FlutterGoogleWalletPlugin: FlutterPlugin, Messages.GoogleWalletApi, Activi
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel : MethodChannel
   private lateinit var context: Context
-  private lateinit var activity: Activity
+  var activity: Activity? = null
   private lateinit var walletClient: PayClient
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -35,7 +35,9 @@ class FlutterGoogleWalletPlugin: FlutterPlugin, Messages.GoogleWalletApi, Activi
   }
 
   override fun initWalletClient() {
-    walletClient = Pay.getClient(activity)
+    if(activity != null){
+      walletClient = Pay.getClient(activity!!)
+    }
   }
 
   override fun getWalletApiAvailabilityStatus(): Boolean {
@@ -45,18 +47,26 @@ class FlutterGoogleWalletPlugin: FlutterPlugin, Messages.GoogleWalletApi, Activi
   }
 
   override fun savePasses(jsonPass: String, addToGoogleWalletRequestCode: Long) {
-    walletClient.savePasses(jsonPass, activity, addToGoogleWalletRequestCode.toInt())
+    if(activity != null){
+      walletClient.savePasses(jsonPass, activity!!, addToGoogleWalletRequestCode.toInt())
+    }
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     activity = binding.activity;
+    binding.addActivityResultListener(this)
   }
 
   override fun onDetachedFromActivityForConfigChanges() {}
 
-  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {}
+  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+    activity = binding.activity;
+    binding.addActivityResultListener(this)
+  }
 
-  override fun onDetachedFromActivity() {}
+  override fun onDetachedFromActivity() {
+    activity = null
+  }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
     if (resultCode == PayClient.SavePassesResult.SAVE_ERROR && data != null) {
