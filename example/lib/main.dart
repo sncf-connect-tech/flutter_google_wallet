@@ -3,13 +3,15 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_google_wallet/flutter_google_wallet_plugin.dart';
+import 'package:flutter_google_wallet/widget/add_to_google_wallet_button.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final flutterGoogleWalletPlugin = FlutterGoogleWalletPlugin();
+  MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -23,6 +25,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    widget.flutterGoogleWalletPlugin.initWalletClient();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -50,7 +53,32 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            children: [
+              Text('Running on: $_platformVersion\n'),
+              FutureBuilder<bool>(
+                future: widget.flutterGoogleWalletPlugin.getWalletApiAvailabilityStatus(),
+                builder: (BuildContext context, AsyncSnapshot<bool> available) {
+                  if (available.data ?? false) {
+                    return Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Align(
+                          alignment: Alignment.topCenter,
+                          child: AddtoGoogleWalletButton(
+                              langue: 'enUS',
+                              onPress: () {
+                                widget.flutterGoogleWalletPlugin.savePasses(
+                                    jsonPass: '',
+                                    addToGoogleWalletRequestCode: 2);
+                              })),
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

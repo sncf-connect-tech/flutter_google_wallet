@@ -1,9 +1,9 @@
-import 'package:flutter/gestures.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:glob/glob.dart';
 
 class AddtoGoogleWalletButton extends StatelessWidget {
-  // TODO gérer de passer la langue
   final VoidCallback? onPress;
   final bool badgeButton;
   final String langue;
@@ -12,10 +12,15 @@ class AddtoGoogleWalletButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final buttonPrefix = badgeButton ? 'add-wallet-badge' : 'wallet-button';
-    // InkWell ?
+    final path = 'assets/svg/button/${langue}_add_to_google_wallet_$buttonPrefix.svg';
+    final file = Glob(path);
     return Column(
       children: [
-        GestureDetector(onTap: onPress,child: SvgPicture.asset(package: 'flutter_google_wallet','assets/svg/button/${langue}_add_to_google_wallet_$buttonPrefix.svg')),
+        GestureDetector(onTap: onPress,
+            child: file is File ?
+          SvgPicture.asset(package: 'flutter_google_wallet','assets/svg/button/${langue}_add_to_google_wallet_$buttonPrefix.svg')
+           : SvgPicture.asset(package: 'flutter_google_wallet','assets/svg/button/enUS_add_to_google_wallet_$buttonPrefix.svg')
+    ),
       ],
     );
   }
