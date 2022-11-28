@@ -13,7 +13,7 @@ abstract class FlutterGoogleWalletPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelFlutterGoogleWallet].
   static FlutterGoogleWalletPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [FlutterGoogleWalletPlatform] when
   /// they register themselves.
@@ -27,11 +27,13 @@ abstract class FlutterGoogleWalletPlatform extends PlatformInterface {
   }
 
   Future<bool> getWalletApiAvailabilityStatus() async {
-    throw UnimplementedError('getWalletApiAvailabilityStatus() has not been implemented.');
+    throw UnimplementedError(
+        'getWalletApiAvailabilityStatus() has not been implemented.');
   }
 
-  Future<void> savePasses (
-      {required String jsonPass, required int addToGoogleWalletRequestCode}) async {
+  Future<void> savePasses(
+      {required String jsonPass,
+      required int addToGoogleWalletRequestCode}) async {
     throw UnimplementedError('savePasses() has not been implemented.');
   }
 }
