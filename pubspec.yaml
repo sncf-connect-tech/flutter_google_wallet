@@ -37,7 +37,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: fr.sncf_connect.wallet.flutter_google_wallet
+        package: sncf.connect.tech.flutter_google_wallet
         pluginClass: FlutterGoogleWalletPlugin
 
     assets:

@@ -1,4 +1,4 @@
-group 'fr.sncf_connect.wallet.flutter_google_wallet'
+group 'sncf.connect.tech.flutter_google_wallet'
 version '1.0-SNAPSHOT'
 
 buildscript {
