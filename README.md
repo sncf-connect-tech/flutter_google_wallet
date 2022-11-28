@@ -3,7 +3,7 @@
 A Flutter Google Wallet Plugin for tickets
 
 [![pub package](https://img.shields.io/pub/v/flutter_google_wallet.svg)](https://pub.dev/packages/flutter_google_wallet)
-[![Test](https://github.com/voyages-sncf-technologies/flutter_google_wallet/actions/workflows/test.yml/badge.svg)](https://github.com/voyages-sncf-technologies/flutter_google_wallet/actions/workflows/test.yml)
+[![Test](https://github.com/voyages-sncf-technologies/flutter_google_wallet/actions/workflows/test.yml/badge.svg)](https://github.com/voyages-sncf-technologies/flutter_google_wallet/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/voyages-sncf-technologies/flutter_google_wallet/branch/main/graph/badge.svg)](https://codecov.io/gh/voyages-sncf-technologies/flutter_google_wallet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
