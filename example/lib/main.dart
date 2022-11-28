@@ -11,6 +11,7 @@ void main() {
 
 class MyApp extends StatefulWidget {
   final flutterGoogleWalletPlugin = FlutterGoogleWalletPlugin();
+
   MyApp({Key? key}) : super(key: key);
 
   @override
@@ -57,7 +58,8 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('Running on: $_platformVersion\n'),
               FutureBuilder<bool>(
-                future: widget.flutterGoogleWalletPlugin.getWalletApiAvailabilityStatus(),
+                future: widget.flutterGoogleWalletPlugin
+                    .getWalletApiAvailabilityStatus(),
                 builder: (BuildContext context, AsyncSnapshot<bool> available) {
                   if (available.data ?? false) {
                     return Padding(
