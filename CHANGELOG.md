@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Fix asset path
+
 ## 0.0.5
 
 * Revert dart version
