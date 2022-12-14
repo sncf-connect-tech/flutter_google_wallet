@@ -1,6 +1,6 @@
 name: flutter_google_wallet
 description: A Flutter Google Wallet Plugin
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/voyages-sncf-technologies/flutter_google_wallet
 
 environment:
@@ -28,7 +28,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  generate: true
   # This section identifies this Flutter project as a plugin project.
   # The 'pluginClass' specifies the class (in Java, Kotlin, Swift, Objective-C, etc.)
   # which should be registered in the plugin registry. This is required for
@@ -48,3 +47,8 @@ flutter:
     assets:
       - assets/svg/button/
       - packages/flutter_google_wallet/assets/svg/button/
+
+flutter_intl:
+  enabled: true
+  class_name: I18nGoogleWallet
+  main_locale: fr

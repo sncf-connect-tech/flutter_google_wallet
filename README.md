@@ -63,3 +63,11 @@ Also add the google wallet button svg to your pubspec assets
     - packages/flutter_google_wallet/assets/svg/button/frFR_add_to_google_wallet_wallet-button.svg
     - packages/flutter_google_wallet/assets/svg/button/enUS_add_to_google_wallet_wallet-button.svg
 ```
+
+And add the wallet localization to your MaterialApp
+
+```dart
+  localizationsDelegates: const [
+    I18nGoogleWallet.delegate,
+  ],
+```
