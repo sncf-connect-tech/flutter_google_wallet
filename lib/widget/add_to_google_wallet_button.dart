@@ -22,7 +22,7 @@ class AddtoGoogleWalletButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final buttonPrefix = badgeButton ? 'add-wallet-badge' : 'wallet-button';
     final path =
-        'assets/svg/button/${normalizedLocale(locale: langue)}_add_to_google_wallet_$buttonPrefix.svg';
+        '${removeSvgPackage ? 'lib/' : ''}/assets/svg/button/${normalizedLocale(locale: langue)}_add_to_google_wallet_$buttonPrefix.svg';
     return Semantics(
       button: true,
       label: '${I18nGoogleWallet.of(context).add_to} Google Wallet',
