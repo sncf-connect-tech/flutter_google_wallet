@@ -10,8 +10,13 @@ class AddtoGoogleWalletButton extends StatelessWidget {
   final bool removeSvgPackage;
 
   const AddtoGoogleWalletButton(
-      {Key? key, this.onPress, this.badgeButton = false, required this.langue, bool? removeSvgPackage})
-      : removeSvgPackage = removeSvgPackage ?? false, super(key: key);
+      {Key? key,
+      this.onPress,
+      this.badgeButton = false,
+      required this.langue,
+      bool? removeSvgPackage})
+      : removeSvgPackage = removeSvgPackage ?? false,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +27,10 @@ class AddtoGoogleWalletButton extends StatelessWidget {
       button: true,
       label: '${I18nGoogleWallet.of(context).add_to} Google Wallet',
       child: GestureDetector(
-            onTap: onPress,
-            child: SvgPicture.asset(package: removeSvgPackage ? null : 'flutter_google_wallet', path)),
+          onTap: onPress,
+          child: SvgPicture.asset(
+              package: removeSvgPackage ? null : 'flutter_google_wallet',
+              path)),
     );
   }
 }

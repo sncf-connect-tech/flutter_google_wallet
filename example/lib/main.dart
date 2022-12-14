@@ -28,9 +28,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        localizationsDelegates: const [
-          I18nGoogleWallet.delegate
-        ],
+      localizationsDelegates: const [I18nGoogleWallet.delegate],
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
