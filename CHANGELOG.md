@@ -1,3 +1,6 @@
+## 0.0.7
+
+* Fix spain locale
 ## 0.0.6
 
 * Fix asset path
