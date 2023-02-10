@@ -10,6 +10,8 @@ String normalizedLocale({required String locale}) {
       return "it";
     case 'nl':
       return "nl";
+    case 'es':
+      return "esES";
     default:
       return "enGB";
   }
