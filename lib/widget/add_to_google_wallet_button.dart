@@ -1,8 +1,49 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_google_wallet/utils/langue_utils.dart';
 import 'package:flutter_google_wallet/generated/l10n.dart';
+import 'package:flutter_google_wallet/utils/locale_utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+class AddToGoogleWalletButton extends StatelessWidget {
+  final VoidCallback? onPress;
+  final GoogleWalletButtonType buttonType;
+  final Locale? locale;
+  final bool useInternalAssetPackage;
+  late final _localeOrDefault = locale ?? window.locale;
+
+  AddToGoogleWalletButton({
+    Key? key,
+    this.onPress,
+    this.buttonType = GoogleWalletButtonType.primary,
+    this.locale,
+    this.useInternalAssetPackage = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final buttonPrefix = buttonType == GoogleWalletButtonType.primary
+        ? 'wallet-button'
+        : 'add-wallet-badge';
+    final assetRoot = useInternalAssetPackage ? 'lib/' : '';
+    final path =
+        '${assetRoot}assets/svg/button/${_localeOrDefault.toAssetPrefix()}_add_to_google_wallet_$buttonPrefix.svg';
+    return Semantics(
+      button: true,
+      label: '${I18nGoogleWallet.of(context).add_to} Google Wallet',
+      child: GestureDetector(
+        onTap: onPress,
+        child: SvgPicture.asset(
+          package: useInternalAssetPackage ? null : 'flutter_google_wallet',
+          path,
+        ),
+      ),
+    );
+  }
+}
+
+enum GoogleWalletButtonType { primary, condensed }
+
+@Deprecated('Use AddToGoogleWalletButton (with a capital T) instead')
 class AddtoGoogleWalletButton extends StatelessWidget {
   final VoidCallback? onPress;
   final bool badgeButton;
@@ -19,18 +60,12 @@ class AddtoGoogleWalletButton extends StatelessWidget {
         super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final buttonPrefix = badgeButton ? 'add-wallet-badge' : 'wallet-button';
-    final path =
-        '${removeSvgPackage ? 'lib/' : ''}assets/svg/button/${normalizedLocale(locale: langue)}_add_to_google_wallet_$buttonPrefix.svg';
-    return Semantics(
-      button: true,
-      label: '${I18nGoogleWallet.of(context).add_to} Google Wallet',
-      child: GestureDetector(
-          onTap: onPress,
-          child: SvgPicture.asset(
-              package: removeSvgPackage ? null : 'flutter_google_wallet',
-              path)),
-    );
-  }
+  Widget build(BuildContext context) => AddToGoogleWalletButton(
+        onPress: onPress,
+        buttonType: badgeButton
+            ? GoogleWalletButtonType.condensed
+            : GoogleWalletButtonType.primary,
+        locale: Locale(langue),
+        useInternalAssetPackage: removeSvgPackage,
+      );
 }

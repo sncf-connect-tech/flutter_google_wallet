@@ -42,8 +42,8 @@ FutureBuilder<bool>(
   future: flutterGoogleWalletPlugin.getWalletApiAvailabilityStatus(),
   builder: (BuildContext context, AsyncSnapshot<bool> available) {
     if (available.data ?? false) {
-      return AddtoGoogleWalletButton(
-        langue: 'enUS',
+      return AddToGoogleWalletButton(
+        locale: Locale('en', 'US'),
         onPress: () {
           widget.flutterGoogleWalletPlugin.savePasses(
             jsonPass: '',

@@ -46,8 +46,8 @@ class _MyAppState extends State<MyApp> {
                       padding: const EdgeInsets.all(10),
                       child: Align(
                           alignment: Alignment.topCenter,
-                          child: AddtoGoogleWalletButton(
-                              langue: 'enUS',
+                          child: AddToGoogleWalletButton(
+                              locale: const Locale('en', 'US'),
                               onPress: () {
                                 widget.flutterGoogleWalletPlugin.savePasses(
                                     jsonPass: '',
