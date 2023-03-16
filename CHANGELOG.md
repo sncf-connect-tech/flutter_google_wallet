@@ -1,6 +1,17 @@
+## 0.0.8
+
+* Fixed SVG in all supported locales
+* Renamed Add*to*GoogleWalletButton to Add*To*GoogleWalletButton (with a capital T): AddToGoogleWalletButton still exists but is deprecated
+* The `badgeButton` field is now the `buttonType` field, and is now of type `GoogleWalletButtonType` which has 2 possible values: 
+  * `GoogleWalletButtonType.primary` which is equivalent to `badgeButton = false`
+  * `GoogleWalletButtonType.condensed` which is equivalent to `badgeButton = true`
+* The field `removeSvgPackage` has been renamed to `useInternalAssetPackage`
+* The field `langue` has been renamed to `locale`, and is now of type `Locale`
+
 ## 0.0.7
 
 * Fix spain locale
+
 ## 0.0.6
 
 * Fix asset path

@@ -1,6 +1,6 @@
 name: flutter_google_wallet
 description: A Flutter Google Wallet Plugin
-version: 0.0.7
+version: 0.0.8
 homepage: https://github.com/voyages-sncf-technologies/flutter_google_wallet
 
 environment:
