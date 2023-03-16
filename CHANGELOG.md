@@ -1,3 +1,7 @@
+## 0.0.9
+
+* Fixed SVG retrieval for languages with country code that don't have a match in SVG assets
+
 ## 0.0.8
 
 * Fixed SVG in all supported locales
