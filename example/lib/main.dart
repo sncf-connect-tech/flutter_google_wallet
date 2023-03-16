@@ -19,10 +19,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final String _platformVersion = 'Unknown';
 
+  late Future<bool> _isWalletAvailable;
+
   @override
   void initState() {
     super.initState();
-    widget.flutterGoogleWalletPlugin.initWalletClient();
+    _isWalletAvailable = Future(() async {
+      await widget.flutterGoogleWalletPlugin.initWalletClient();
+      return widget.flutterGoogleWalletPlugin.getWalletApiAvailabilityStatus();
+    });
   }
 
   @override
@@ -38,21 +43,22 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('Running on: $_platformVersion\n'),
               FutureBuilder<bool>(
-                future: widget.flutterGoogleWalletPlugin
-                    .getWalletApiAvailabilityStatus(),
+                future: _isWalletAvailable,
                 builder: (BuildContext context, AsyncSnapshot<bool> available) {
-                  if (available.data ?? false) {
+                  if (available.data == true) {
                     return Padding(
                       padding: const EdgeInsets.all(10),
                       child: Align(
-                          alignment: Alignment.topCenter,
-                          child: AddToGoogleWalletButton(
-                              locale: const Locale('en', 'US'),
-                              onPress: () {
-                                widget.flutterGoogleWalletPlugin.savePasses(
-                                    jsonPass: '',
-                                    addToGoogleWalletRequestCode: 2);
-                              })),
+                        alignment: Alignment.topCenter,
+                        child: AddToGoogleWalletButton(
+                          locale: const Locale('fr', 'FR'),
+                          onPress: () {
+                            widget.flutterGoogleWalletPlugin.savePasses(
+                                jsonPass: exampleJsonPass,
+                                addToGoogleWalletRequestCode: 2);
+                          },
+                        ),
+                      ),
                     );
                   } else {
                     return const SizedBox.shrink();
@@ -66,3 +72,40 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+// This is a pass with fake data, and it will trigger an error when added to Google Wallet
+// For a pass with real data, you must follow the Google developer guide here: https://developers.google.com/wallet
+const exampleJsonPass = '''
+{
+  "aud": "google",
+  "origins": [
+    "https://localhost:8080"
+  ],
+  "iss": "123456789@developer.gserviceaccount.com",
+  "iat": 123456789,
+  "typ": "savetowallet",
+  "payload": {
+    "loyaltyObjects": [
+      {
+        "barcode": {
+          "alternateText": "12345",
+          "type": "qrCode",
+          "value": "28343E3"
+        },
+        "id": "123456789.LoyaltyObject",
+        "loyaltyPoints": {
+          "balance": {
+            "string": "500"
+          },
+          "label": "Points"
+        },
+        "accountId": "1234567890",
+        "classId": "123456789.LoyaltyClass",
+        "accountName": "Jane Doe",
+        "state": "active",
+        "version": 1
+      }
+    ]
+  }
+}
+''';
