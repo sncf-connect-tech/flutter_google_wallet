@@ -11,11 +11,15 @@ extension LocaleExtensions on Locale {
   bool _existsInAssets() => validAssetLocaleSet.contains(this);
 
   Locale _getFallbackLocale() {
+    final primaryLocale = Locale(languageCode);
+    if (primaryLocale._existsInAssets()) {
+      return primaryLocale;
+    }
     switch (languageCode) {
       case 'fr':
         return const Locale('fr', 'FR');
       case 'en':
-        return const Locale('en', 'GB');
+        return const Locale('en', 'US');
       case 'es':
         return const Locale('es', 'ES');
       case 'zh':
