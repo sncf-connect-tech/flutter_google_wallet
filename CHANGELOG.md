@@ -1,3 +1,7 @@
+## 0.0.10
+
+* Bump pigeon version to ^9.2.4
+
 ## 0.0.9
 
 * Fixed SVG retrieval for languages with country code that don't have a match in SVG assets
