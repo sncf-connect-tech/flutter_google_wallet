@@ -1,3 +1,32 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 2023-04-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_google_wallet` - `v0.0.12`](#flutter_google_wallet---v0012)
+
+---
+
+#### `flutter_google_wallet` - `v0.0.12`
+
+ - **FEAT**: toto.
+
+## 0.0.12
+
+ - **FEAT**: toto.
+
 ## 0.0.11
 
 *  Bump version golden_toolkit to 0.15.0 and flutter_svg to 2.0.0
