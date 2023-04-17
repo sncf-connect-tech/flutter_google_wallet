@@ -1,3 +1,7 @@
+## 0.0.11
+
+*  Bump version golden_toolkit to 0.15.0 and flutter_svg to 2.0.0
+
 ## 0.0.10
 
 * Bump pigeon version to ^9.2.4
