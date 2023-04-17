@@ -6,6 +6,7 @@ A Flutter Google Wallet Plugin for tickets
 [![Test](https://github.com/voyages-sncf-technologies/flutter_google_wallet/actions/workflows/test.yaml/badge.svg)](https://github.com/voyages-sncf-technologies/flutter_google_wallet/actions/workflows/test.yaml)
 [![codecov](https://codecov.io/gh/voyages-sncf-technologies/flutter_google_wallet/branch/main/graph/badge.svg)](https://codecov.io/gh/voyages-sncf-technologies/flutter_google_wallet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
 
 ## Features
 
@@ -70,4 +71,12 @@ And add the wallet localization to your MaterialApp
   localizationsDelegates: const [
     I18nGoogleWallet.delegate,
   ],
+```
+
+## Contribute
+
+To maintain this repository, please first install melos & bootstrap in root directory of the project :
+```bash
+dart pub global activate melos
+melos bs
 ```
