@@ -4,18 +4,18 @@ version: 0.0.11
 homepage: https://github.com/voyages-sncf-technologies/flutter_google_wallet
 
 environment:
-  sdk: '>=2.17.0 <3.0.0'
-  flutter: ">=2.5.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  pigeon: ^9.2.4
+  pigeon: ^10.0.0
   flutter_svg: ^2.0.5
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
