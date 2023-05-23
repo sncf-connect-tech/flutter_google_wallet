@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_wallet/generated/l10n.dart';
 import 'package:flutter_google_wallet/utils/locale_utils.dart';
@@ -9,9 +8,8 @@ class AddToGoogleWalletButton extends StatelessWidget {
   final GoogleWalletButtonType buttonType;
   final Locale? locale;
   final bool useInternalAssetPackage;
-  late final _localeOrDefault = locale ?? window.locale;
 
-  AddToGoogleWalletButton({
+  const AddToGoogleWalletButton({
     Key? key,
     this.onPress,
     this.buttonType = GoogleWalletButtonType.primary,
@@ -21,12 +19,14 @@ class AddToGoogleWalletButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localeOrDefault =
+        locale ?? WidgetsBinding.instance.platformDispatcher.locale;
     final buttonPrefix = buttonType == GoogleWalletButtonType.primary
         ? 'wallet-button'
         : 'add-wallet-badge';
     final assetRoot = useInternalAssetPackage ? 'lib/' : '';
     final path =
-        '${assetRoot}assets/svg/button/${_localeOrDefault.toAssetPrefix()}_add_to_google_wallet_$buttonPrefix.svg';
+        '${assetRoot}assets/svg/button/${localeOrDefault.toAssetPrefix()}_add_to_google_wallet_$buttonPrefix.svg';
     return Semantics(
       button: true,
       label: '${I18nGoogleWallet.of(context).add_to} Google Wallet',
