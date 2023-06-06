@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-06-06
+
+### Changes
+
+---
+
+- Use kotlin as output language for generated Pigeon bindings
+- Use gradle 7.5
+
 ## 2023-05-23
 
 ### Changes

@@ -3,7 +3,6 @@ package sncf.connect.tech.flutter_google_wallet
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.annotation.NonNull
 import com.google.android.gms.pay.Pay
 import com.google.android.gms.pay.PayApiAvailabilityStatus
 import com.google.android.gms.pay.PayClient
@@ -11,21 +10,20 @@ import com.google.android.gms.tasks.Tasks
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.PluginRegistry
 
-class FlutterGoogleWalletPlugin: FlutterPlugin, Messages.GoogleWalletApi, ActivityAware, PluginRegistry.ActivityResultListener {
+class FlutterGoogleWalletPlugin: FlutterPlugin, GoogleWalletApi, ActivityAware, PluginRegistry.ActivityResultListener {
   private lateinit var context: Context
-  var activity: Activity? = null
+  private var activity: Activity? = null
   private lateinit var walletClient: PayClient
 
-  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    Messages.GoogleWalletApi.setup(flutterPluginBinding.binaryMessenger, this)
+  override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    GoogleWalletApi.setUp(flutterPluginBinding.binaryMessenger, this)
     context = flutterPluginBinding.applicationContext
   }
 
-  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-    Messages.GoogleWalletApi.setup(binding.binaryMessenger, null)
+  override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+    GoogleWalletApi.setUp(binding.binaryMessenger, null)
   }
 
   override fun initWalletClient() {
@@ -47,14 +45,14 @@ class FlutterGoogleWalletPlugin: FlutterPlugin, Messages.GoogleWalletApi, Activi
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-    activity = binding.activity;
+    activity = binding.activity
     binding.addActivityResultListener(this)
   }
 
   override fun onDetachedFromActivityForConfigChanges() {}
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    activity = binding.activity;
+    activity = binding.activity
     binding.addActivityResultListener(this)
   }
 
