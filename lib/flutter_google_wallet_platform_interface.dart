@@ -36,4 +36,10 @@ abstract class FlutterGoogleWalletPlatform extends PlatformInterface {
       required int addToGoogleWalletRequestCode}) async {
     throw UnimplementedError('savePasses() has not been implemented.');
   }
+
+  Future<void> savePassesJwt(
+      {required String jsonPass,
+      required int addToGoogleWalletRequestCode}) async {
+    throw UnimplementedError('savePasses() has not been implemented.');
+  }
 }

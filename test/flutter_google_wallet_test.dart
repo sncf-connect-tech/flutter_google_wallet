@@ -18,6 +18,12 @@ class MockFlutterGoogleWalletPlatform
           {required String jsonPass,
           required int addToGoogleWalletRequestCode}) =>
       Future.value();
+
+  @override
+  Future<void> savePassesJwt(
+          {required String jsonPass,
+          required int addToGoogleWalletRequestCode}) =>
+      Future.value();
 }
 
 void main() {

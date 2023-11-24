@@ -47,6 +47,7 @@ interface GoogleWalletApi {
   fun initWalletClient()
   fun getWalletApiAvailabilityStatus(): Boolean
   fun savePasses(jsonPass: String, addToGoogleWalletRequestCode: Long)
+  fun savePassesJwt(jsonPass: String, addToGoogleWalletRequestCode: Long)
 
   companion object {
     /** The codec used by GoogleWalletApi. */
@@ -100,6 +101,26 @@ interface GoogleWalletApi {
             var wrapped: List<Any?>
             try {
               api.savePasses(jsonPassArg, addToGoogleWalletRequestCodeArg)
+              wrapped = listOf<Any?>(null)
+            } catch (exception: Throwable) {
+              wrapped = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.GoogleWalletApi.savePassesJwt", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val jsonPassArg = args[0] as String
+            val addToGoogleWalletRequestCodeArg = args[1].let { if (it is Int) it.toLong() else it as Long }
+            var wrapped: List<Any?>
+            try {
+              api.savePassesJwt(jsonPassArg, addToGoogleWalletRequestCodeArg)
               wrapped = listOf<Any?>(null)
             } catch (exception: Throwable) {
               wrapped = wrapError(exception)
