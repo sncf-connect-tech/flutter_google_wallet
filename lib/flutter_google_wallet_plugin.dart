@@ -17,4 +17,12 @@ class FlutterGoogleWalletPlugin {
         jsonPass: jsonPass,
         addToGoogleWalletRequestCode: addToGoogleWalletRequestCode);
   }
+
+  Future<void> savePassesJwt(
+      {required String jsonPass,
+      required int addToGoogleWalletRequestCode}) async {
+    await FlutterGoogleWalletPlatform.instance.savePassesJwt(
+        jsonPass: jsonPass,
+        addToGoogleWalletRequestCode: addToGoogleWalletRequestCode);
+  }
 }

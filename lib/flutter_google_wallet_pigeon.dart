@@ -21,4 +21,11 @@ class PigeonFlutterGoogleWallet extends FlutterGoogleWalletPlatform {
       required int addToGoogleWalletRequestCode}) async {
     await _api.savePasses(jsonPass, addToGoogleWalletRequestCode);
   }
+
+  @override
+  Future<void> savePassesJwt(
+      {required String jsonPass,
+      required int addToGoogleWalletRequestCode}) async {
+    await _api.savePassesJwt(jsonPass, addToGoogleWalletRequestCode);
+  }
 }

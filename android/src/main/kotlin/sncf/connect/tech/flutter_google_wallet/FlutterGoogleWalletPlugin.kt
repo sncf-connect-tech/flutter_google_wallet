@@ -16,7 +16,7 @@ class FlutterGoogleWalletPlugin: FlutterPlugin, GoogleWalletApi, ActivityAware, 
   private lateinit var context: Context
   private var activity: Activity? = null
   private lateinit var walletClient: PayClient
-
+  
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     GoogleWalletApi.setUp(flutterPluginBinding.binaryMessenger, this)
     context = flutterPluginBinding.applicationContext
@@ -41,6 +41,12 @@ class FlutterGoogleWalletPlugin: FlutterPlugin, GoogleWalletApi, ActivityAware, 
   override fun savePasses(jsonPass: String, addToGoogleWalletRequestCode: Long) {
     if(activity != null){
       walletClient.savePasses(jsonPass, activity!!, addToGoogleWalletRequestCode.toInt())
+    }
+  }
+
+  override fun savePassesJwt(jsonPass: String, addToGoogleWalletRequestCode: Long) {
+    if(activity != null){
+      walletClient.savePassesJwt(jsonPass, activity!!, addToGoogleWalletRequestCode.toInt())
     }
   }
 
