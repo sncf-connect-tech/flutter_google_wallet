@@ -1,4 +1,4 @@
-dart pub run pigeon \
+dart run pigeon \
  --input pigeons/messages.dart \
  --dart_out lib/messages.dart \
  --kotlin_out android/src/main/kotlin/sncf/connect/tech/flutter_google_wallet/Messages.kt \
