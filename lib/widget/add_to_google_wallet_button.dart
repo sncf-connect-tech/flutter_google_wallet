@@ -10,12 +10,12 @@ class AddToGoogleWalletButton extends StatelessWidget {
   final bool useInternalAssetPackage;
 
   const AddToGoogleWalletButton({
-    Key? key,
+    super.key,
     this.onPress,
     this.buttonType = GoogleWalletButtonType.primary,
     this.locale,
     this.useInternalAssetPackage = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +51,12 @@ class AddtoGoogleWalletButton extends StatelessWidget {
   final bool removeSvgPackage;
 
   const AddtoGoogleWalletButton(
-      {Key? key,
+      {super.key,
       this.onPress,
       this.badgeButton = false,
       required this.langue,
       bool? removeSvgPackage})
-      : removeSvgPackage = removeSvgPackage ?? false,
-        super(key: key);
+      : removeSvgPackage = removeSvgPackage ?? false;
 
   @override
   Widget build(BuildContext context) => AddToGoogleWalletButton(

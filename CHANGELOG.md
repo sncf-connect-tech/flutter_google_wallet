@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_google_wallet` - `v0.1.3`](#flutter_google_wallet---v013)
+
+---
+
+#### `flutter_google_wallet` - `v0.1.3`
+
+ - **FEAT**(flutter_google_wallet_plugin): add method to add jwt signed wallet.
+
+## 0.1.3
+
+ - **FEAT**(flutter_google_wallet_plugin): add method to add jwt signed wallet.
+
+
 ## 2023-12-05
 
 ### Changes
