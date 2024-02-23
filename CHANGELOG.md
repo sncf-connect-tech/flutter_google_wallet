@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_google_wallet` - `v0.1.4`](#flutter_google_wallet---v014)
+
+---
+
+#### `flutter_google_wallet` - `v0.1.4`
+
+ - **BUILD**(flutter_google_wallet_plugin): pigeon as dev_dependencies
+
+## 0.1.4
+
+ - **BUILD**(flutter_google_wallet_plugin): pigeon as dev_dependencies
+
+
 ## 2024-02-22
 
 ### Changes
@@ -21,11 +46,11 @@ Packages with other changes:
 
 #### `flutter_google_wallet` - `v0.1.3`
 
- - **FEAT**(flutter_google_wallet_plugin): add method to add jwt signed wallet.
+ - **BUILD**(flutter_google_wallet_plugin): Upgrade Pigeon
 
 ## 0.1.3
 
- - **FEAT**(flutter_google_wallet_plugin): add method to add jwt signed wallet.
+ - **BUILD**(flutter_google_wallet_plugin): Upgrade Pigeon
 
 
 ## 2023-12-05
