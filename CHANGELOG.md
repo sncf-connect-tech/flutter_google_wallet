@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_google_wallet` - `v0.2.1`](#flutter_google_wallet---v021)
+
+---
+
+#### `flutter_google_wallet` - `v0.2.1`
+
+## 0.2.1
+
+
 ## 2024-02-23
 
 ### Changes
